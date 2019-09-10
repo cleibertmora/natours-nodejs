@@ -4,8 +4,8 @@ const dotenv = require('dotenv');
 const Tour = require('./../../models/tourModel');
 
 dotenv.config({ path: './config.env' });
-//const DB = process.env.DATABASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD);
-const DB = process.env.DATABASE_LOCAL;
+const DB = process.env.DATABASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD);
+//const DB = process.env.DATABASE_LOCAL;
 
 mongoose.connect( DB, {
     useNewUrlParser: true,
@@ -15,7 +15,7 @@ mongoose.connect( DB, {
     console.log('now connected!');
 });
 
-const data = fs.readFileSync(`${__dirname}/tours-simple.json`, 'utf-8');
+const data = fs.readFileSync(`${__dirname}/tours.json`, 'utf-8');
 const tours = JSON.parse(data);
 
 const createTours = async () => {
